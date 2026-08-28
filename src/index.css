@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@600;700;800;900&family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/digital-7-mono');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --theme-bg: #090306;
+  --header-bg: rgba(18, 6, 12, 0.95);
+  --primary: #ef4444;
+  --primary-glow: rgba(239, 68, 68, 0.35);
+  --secondary: rgba(239, 68, 68, 0.12);
+  --bet-btn: #10b981;
+  --cashout-btn: #ef4444;
+  --deposit-btn: #10b981;
+  --withdraw-btn: #ef4444;
+  --card-bg: rgba(24, 8, 16, 0.72);
+  --text-color: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(245, 158, 11, 0.35);
+  --font-game: 'Rajdhani', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #2a0715 0%, #120309 45%, #070104 100%);
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ef4444 0%, #7f1d1d 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
+
+/* Luxury Glassmorphism Card */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-card-glow {
+  background: linear-gradient(145deg, rgba(28, 9, 18, 0.85) 0%, rgba(16, 5, 11, 0.9) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px -10px rgba(239, 68, 68, 0.25), 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.glass-card-gold {
+  background: linear-gradient(145deg, rgba(28, 16, 9, 0.85) 0%, rgba(16, 8, 5, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px 0 rgba(245, 158, 11, 0.15);
+}
+
+/* Luxury Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Luxury Emerald Bet Button (Green) */
+.btn-bet {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+.btn-bet:hover:not(:disabled) {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  box-shadow: 0 6px 28px rgba(16, 185, 129, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Luxury Ruby Cashout & Withdraw Button (Red) */
+.btn-cashout {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+.btn-cashout:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  box-shadow: 0 6px 30px rgba(239, 68, 68, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Luxury Gold Button */
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+}
+
+/* Input Fields */
+input, select, textarea {
+  background: rgba(12, 4, 8, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 11px 15px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+  background: rgba(20, 6, 14, 0.98);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 2, 4, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+  padding: 16px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 18px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.85); }
+}
+
+.anim-glow {
+  animation: pulseGlow 2.2s infinite;
+}
+
+/* Gaming Font for Multipliers & Balances */
+.font-game {
+  font-family: var(--font-game);
+  letter-spacing: 0.06em;
+}
+
+/* 7-Segment Digital Clock Font */
+.font-digital {
+  font-family: 'Digital-7 Mono', 'Digital-7', 'DSEG7 Classic', 'Share Tech Mono', 'Orbitron', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  font-feature-settings: "tnum";
+}
+
+.admin-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+.admin-sidebar {
+  width: 250px;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+.admin-content {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+}

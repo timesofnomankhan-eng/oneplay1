@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Production build (Render builds this on the cloud)
+dist/
+
+# Environment local files
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.system_generated/
+
+# OS Files
+.DS_Store
+Thumbs.db
