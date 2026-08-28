@@ -37,20 +37,29 @@ app.use('/api/game', require('./routes/gameRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/settings', require('./routes/settingsRoutes'));
 
-// Serve Production Frontend (if dist exists)
-const distPath = path.join(__dirname, '../../dist');
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
+// Serve Production Frontend (Checks all possible dist locations)
+const possibleDistPaths = [
+  path.join(__dirname, '../../dist'),
+  path.join(__dirname, '../dist'),
+  path.join(process.cwd(), 'dist')
+];
+const activeDistPath = possibleDistPaths.find(p => fs.existsSync(p));
+
+if (activeDistPath) {
+  console.log(`📦 Serving production frontend from: ${activeDistPath}`);
+  app.use(express.static(activeDistPath));
   app.get('*', (req, res) => {
-    // Avoid intercepting /api or /socket.io
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/socket.io')) {
       return res.status(404).json({ message: 'API Route Not Found' });
     }
-    res.sendFile(path.join(distPath, 'index.html'));
+    res.sendFile(path.join(activeDistPath, 'index.html'));
   });
+} else {
+  console.log(`⚠️ Production dist folder not found. API mode only.`);
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT, 10) || 5000;
+const HOST = process.env.IP || '0.0.0.0';
 
 async function startServer() {
   try {
@@ -63,8 +72,8 @@ async function startServer() {
     // 3. Setup WebSocket Handlers
     setupSocketHandler(io);
 
-    server.listen(PORT, '0.0.0.0', () => {
-      console.log(`🚀 OnePlay1 Server running on http://localhost:${PORT}`);
+    server.listen(PORT, HOST, () => {
+      console.log(`🚀 OnePlay1 Server running on http://${HOST}:${PORT}`);
       console.log(`🎮 Game Engine started and broadcasting`);
       console.log(`🔑 Admin ready: Noman / @Nomankhan1`);
     });
